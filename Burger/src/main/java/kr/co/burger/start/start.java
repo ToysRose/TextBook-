@@ -1,4 +1,4 @@
-package Main;
+package kr.co.burger.start;
 
 import Main.UI;
 

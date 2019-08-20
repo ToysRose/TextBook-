@@ -1,34 +1,32 @@
-package Main;
+package kr.co.burger.start;
 
 import java.util.Scanner;
 import java.util.concurrent.Delayed;
 
 import javax.xml.bind.annotation.XmlElement.DEFAULT;
 
-import InterfaceA.BaseUI;
-import Vo.Userdata;
-import login.logIn;
-import login.logOut;
-import login.userDelete;
-import login.userInfo;
-import login.userJoin;
-import menu.menuA;
-import notice.notice;
-import shop.shop;
+import kr.co.burger.domain.User;
+import userDao.BaseUI;
+import 로그인.logIn;
+import 로그인.logOut;
+import 로그인.userInfo;
+import 로그인.userJoin;
+import 로그인.userOut;
+import 샵.shop;
 
 public class UI {
 	
-public static Userdata LoginStatus = null;
+public static User LoginStatus = null;
 
 public static Scanner sc = new Scanner(System.in);
 
 	public void service() {
 		BaseUI ui =null;
 		while(true) {
-			if(LoginStatus == null) {
+			if(LoginStatus != null) {
 				switch(menuview()) {
 				case 1 : ui= new logIn(); break;
-				case 2 : ui= new menuA(LoginStatus);break;
+				case 2 : ui= new menu();break;
 				case 3 : ui= new userJoin(); break;
 				case 4 : ui= new shop();  break;
 				case 5 : ui= new notice(); break;
@@ -38,7 +36,7 @@ public static Scanner sc = new Scanner(System.in);
 			}else {
 				switch(menuview()) {
 				case 1 : ui= new logOut(); break;
-				case 2 : ui= new menuA(LoginStatus);break;
+				case 2 : ui= new menu();break;
 				case 3 : ui= new userInfo(LoginStatus); break;
 				case 4 : ui= new shop();  break;
 				case 5 : ui= new notice(); break;
