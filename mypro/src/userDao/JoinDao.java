@@ -1,7 +1,6 @@
 package userDao;
 import java.util.ArrayList;
 import java.util.List;
-
 import Main.UI;
 
 public class JoinDao {
@@ -14,12 +13,21 @@ public class JoinDao {
 	 public String noBlank(String c) {
 		while (a==true) {	
 			System.out.print(c+":");
-			s=new UI().sc.nextLine();
+			s=UI.sc.nextLine();
 			if(s.contains(" ") || s.equals("")) System.out.printf("%s는 공백입력이 되지않습니다.%n",c); 
 			else a=false;
 		} a=true; 
 		return s;
 		}
+	 public String noempty(String c) {
+		 while (a==true) {	
+			 System.out.print(c+":");
+			 s=UI.sc.nextLine();
+			 if(s.equals("")) System.out.printf("%s는 필수로 입력해야합니다.%n",c); 
+			 else a=false;
+		 } a=true; 
+		 return s;
+	 }
 //	 11자리 아니거나 숫자가 아닌것을 걸러주는 메소드
 	 public String onlyNumber(String c) {
 	while(b==true) {

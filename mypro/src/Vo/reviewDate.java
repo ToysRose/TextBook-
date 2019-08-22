@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class reviewDate {
 
-	private String code;
+	private int code;
 	private int no;
 	private String id;
 	private String title;
@@ -14,10 +14,10 @@ public class reviewDate {
 	private int recom;
 	private String gCode;
 	
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 	public int getNo() {

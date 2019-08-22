@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import Vo.shopDate;
+import util.ConnectionFactory;
 import util.ConnectionPool;
 
 public class shopDao {
@@ -37,8 +38,8 @@ public class shopDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {con.close();} catch (Exception e) {}
-			try {pstmt.close();} catch (Exception e) {}
+			ConnectionFactory.close(pstmt);
+			ConnectionPool.releaseConnection(con);
 		}
 		return null;
 	}

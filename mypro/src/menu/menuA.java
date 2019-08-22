@@ -24,6 +24,7 @@ public class menuA implements BaseUI{
 	}
 
 	public void service() {
+		
 		System.out.println("---------------------------");
 		System.out.println("원하는 메뉴를 선택하세요.");
 		System.out.println("---------------------------");
@@ -31,9 +32,8 @@ public class menuA implements BaseUI{
 		while (true) {
 			switch (menu()) {
 			case 1: ui = new MenulistBoardUI(LoginInfo); break;
-//			case 2: ui = new recomMenuBoardUI(dao); break;
+			case 2: ui = new recomMenuBoardUI(LoginInfo); break;
 //			case 3: ui = new searchMenuBoardUI(dao); break;
-//			case 4: ui = new signatureMenuBoardUI(dao); break;
 			case 0: return;
 			default: 
 				System.out.println("잘못된 번호입니다.");

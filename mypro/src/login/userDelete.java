@@ -1,22 +1,17 @@
 package login;
 
-import java.util.Scanner;
-
-import InterfaceA.BaseUI;
 import Main.UI;
-import Vo.Userdata;
 import userDao.userDao;
 
-public class userDelete implements BaseUI{
+public class userDelete {
 
-	private Userdata LoginInfo;
-	
-	public userDelete(Userdata LoginInfo) {
-		this.LoginInfo=LoginInfo;
+	public userDelete(String id) {
+		new userDao().deleteUser(id);
+		UI.LoginStatus=null;
 	}
 	
-	public void service() {
-	new userDao().deleteUser(LoginInfo.getId());
-	}
+	
+	
+
 
 }

@@ -2,7 +2,7 @@ package Vo;
 
 import java.util.Date;
 
-public class commetDate {
+public class commentDate {
 
 	private int no;
 	private int comenNo;

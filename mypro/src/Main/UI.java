@@ -30,7 +30,7 @@ public static Scanner sc = new Scanner(System.in);
 				case 1 : ui= new logIn(); break;
 				case 2 : ui= new menuA(LoginStatus);break;
 				case 3 : ui= new userJoin(); break;
-				case 4 : ui= new shop();  break;
+				case 4 : ui= new shop(LoginStatus);  break;
 				case 5 : ui= new notice(); break;
 				case 0 : exit();
 				default :  System.out.println("잘못선택했습니다"); break;
@@ -40,7 +40,7 @@ public static Scanner sc = new Scanner(System.in);
 				case 1 : ui= new logOut(); break;
 				case 2 : ui= new menuA(LoginStatus);break;
 				case 3 : ui= new userInfo(LoginStatus); break;
-				case 4 : ui= new shop();  break;
+				case 4 : ui= new shop(LoginStatus);  break;
 				case 5 : ui= new notice(); break;
 				case 0 : exit();
 				default :  System.out.println("잘못선택했습니다"); break;
@@ -52,7 +52,7 @@ public static Scanner sc = new Scanner(System.in);
 	
 	
 public int menuview() {
-	if(LoginStatus != null) {
+	if(LoginStatus == null) {
 	System.out.println("------------------------");
 	System.out.println("메인메뉴");
 	System.out.println("------------------------");

@@ -20,7 +20,7 @@ private userDao dao;
 		jdao.s="";
 		u.setPassword(jdao.noBlank("비밀번호"));
 		jdao.s="";
-		u.setAddress(jdao.noBlank("주소"));		
+		u.setAddress(jdao.noempty("주소"));		
 		jdao.s="";
 		u.setPhone_no(jdao.onlyNumber("핸드폰번호('-'뺴고입력)"));		
 		jdao.s="";

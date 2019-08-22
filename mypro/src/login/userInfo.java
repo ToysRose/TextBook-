@@ -8,33 +8,13 @@ import Vo.Userdata;
 public class userInfo implements BaseUI{
 
 	private Userdata LoginInfo;
-	
 	public userInfo(Userdata LoginStatus) {
 		this.LoginInfo=LoginStatus;
 	}
 	
 	public void service() {
 		
-		
-		
-		while(true) {
-			switch(Info()) {
-			
-			case 1 : new userUpdate(LoginInfo); break;
-			case 2 : new userDelete(LoginInfo); break;
-			case 0 : return;
-			default : System.out.println("번호 1,2,0 중 선택해주세요.");break;
-				
-			}
-			
-			
-		}
-		
-		
-	}
-	
-	private int Info() {
-		
+
 		System.out.println("---------------------");
 		System.out.println("아이디:"+LoginInfo.getId());
 		System.out.println("주소:"+LoginInfo.getAddress());
@@ -47,7 +27,15 @@ public class userInfo implements BaseUI{
 		System.out.println("2.삭제");
 		System.out.println("0.이전");
 		
-		return Integer.parseInt(UI.sc.nextLine());
+		while(true) {
+			switch(Integer.parseInt(UI.sc.nextLine())) {
+			
+			case 1 : new userUpdate(LoginInfo); return;
+			case 2 : new userDelete(LoginInfo.getId()); return;
+			case 0 : return;
+			default : System.out.println("번호 1,2,0 중 선택해주세요.");break;
+				
+			}
+		}
 	}
-
 }

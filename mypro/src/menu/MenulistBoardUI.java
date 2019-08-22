@@ -2,17 +2,13 @@ package menu;
 
 import InterfaceA.BaseUI;
 import Main.UI;
-import Vo.BurgerDate;
 import Vo.Userdata;
-import menuDao.selectmenuDao;
 
-public class MenulistBoardUI implements BaseUI {
-	private selectmenuDao dao;
+public class MenulistBoardUI implements BaseUI{
 	private Userdata LoginInfo;
 
 	public MenulistBoardUI(Userdata LoginStatus) {
 		this.LoginInfo = LoginStatus;
-		this.dao = new selectmenuDao();
 	}
 
 	public int menu() {
@@ -34,14 +30,14 @@ public class MenulistBoardUI implements BaseUI {
 	public void service() {
 		while (true) {
 			switch (menu()) {
-			case 1: burger(1); break;
-			case 2: burger(2); break;
-			case 3: burger(3); break;
-			case 4: burger(4); break;
-			case 5: burger(5); break;
-			case 6: burger(6); break;
-			case 7: burger(7); break;
-			case 8: burger(8); break;
+			case 1: new menuAll(LoginInfo).burger(1); break;
+			case 2: new menuAll(LoginInfo).burger(2); break;
+			case 3: new menuAll(LoginInfo).burger(3); break;
+			case 4: new menuAll(LoginInfo).burger(4); break;
+			case 5: new menuAll(LoginInfo).burger(5); break;
+			case 6: new menuAll(LoginInfo).burger(6); break;
+			case 7: new menuAll(LoginInfo).burger(7); break;
+			case 8: new menuAll(LoginInfo).burger(8); break;
 			case 0: return;
 			default: {
 				System.out.println("잘못된 메뉴번호 입니다.");
@@ -52,44 +48,5 @@ public class MenulistBoardUI implements BaseUI {
 		}
 	}
 
-	public void burger(int no) {
-
-		BurgerDate b = dao.burgerOneselect(no);
-		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-		System.out.println("이름" + b.getMenu());
-		System.out.println("가격" + b.getPrice());
-		System.out.println("칼로리" + b.getKcal());
-		System.out.println("추천수" + b.getRecom());
-		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-
-		service1();
-
-	}
-
-	public void service1() {
-		BaseUI ui = null;
-		while (true) {
-
-			switch (menu1()) {
-//			case 1: new recomBoardUI(); break;
-			case 2: ui = new PayBoardUI();	break;
-//			case 3: new reviewBoardUI(); break;
-			case 0: return;
-			}
-			if (ui != null)
-				ui.service();
-		}
-	}
-
-	public int menu1() {
-
-		System.out.println("1. 추천하기");
-		System.out.println("2. 결제하기");
-		System.out.println("3. 리뷰");
-		System.out.println("0. 이전");
-		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-		System.out.print("선택하세요 : ");
-		return Integer.parseInt(UI.sc.nextLine());
-	}
 
 }

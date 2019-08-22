@@ -7,7 +7,7 @@ import Vo.BurgerDate;
 import util.ConnectionFactory;
 import util.ConnectionPool;
 
-public class selectmenuDao {
+public class menuDao {
 //버거 코드받아서 정보 뿌려주는메소드
 	public BurgerDate burgerOneselect(int no) {
 

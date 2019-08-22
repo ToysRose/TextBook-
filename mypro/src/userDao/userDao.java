@@ -13,15 +13,13 @@ import util.SqlExcutor;
 
 public class userDao {
  
-	List list= new  ArrayList();
-	
 	public void insertUser(Userdata u) {
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			int cnt = SqlExcutor.update(
-					"insert into tb_user(id,password,Address,Phone_no"
+					"insert into tb_user(id,password,Address,Phone_no,"
 					+ "Name) values(?,?,?,?,?)",
 					u.getId(),u.getPassword(),u.getAddress(),u.getPhone_no(),u.getName());
 			
@@ -32,7 +30,6 @@ public class userDao {
 			System.out.println("오류가 발생하였습니다.");
 		} 
 		//DB에 데이터입력
-		list.add(u);// 오브젝트 배열로 들어감
 	}
 	
 	public void deleteUser(String id) {
@@ -41,7 +38,7 @@ public class userDao {
 		
 		try {
 			int cnt =SqlExcutor.update(
-					"delete form tb_user where id=?  ",
+					"delete from tb_user where id=?  ",
 					id);
 			
 			if(cnt!=0)System.out.println("탈퇴 되었습니다.");
@@ -58,9 +55,9 @@ public class userDao {
 		try {
 			int cnt =SqlExcutor.update(
 					"update tb_user "
-					+ "set ADDRESS=? PHONE_NO=? NAME=? "
+					+ "set password=?, ADDRESS=?, PHONE_NO=?, NAME=? "
 					+ " where id=?  "
-					,u.getAddress(),u.getPhone_no(),u.getName(),id);
+					,u.getPassword(),u.getAddress(),u.getPhone_no(),u.getName(),id);
 			
 			if(cnt!=0)System.out.println("수정 되었습니다.");
 			if(cnt==0)System.out.println("오류가 발생하였습니다.");
@@ -77,7 +74,7 @@ public class userDao {
 		try {
 			con= ConnectionPool.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select* from tb_user where id=? password=?");
+			sql.append("select* from tb_user where id=? and password=?");
 			
 			pstmt = con.prepareStatement(sql.toString());
 			
@@ -93,7 +90,7 @@ public class userDao {
 				login.setAddress(rs.getString("address"));
 				login.setPhone_no(rs.getString("phone_no"));
 				login.setName(rs.getString("name"));
-				login.setUsertype(rs.getString("usertype"));
+//				login.setUsertype(rs.getString("usertype"));
 				return login;
 			}
 			
