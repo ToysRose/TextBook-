@@ -30,7 +30,7 @@ public class menuDao {
 				b.setMenu(rs.getString("menu"));
 				b.setPrice(rs.getInt("price"));
 				b.setKcal(rs.getInt("kcal"));
-				b.setRecom(rs.getInt("recom"));
+				b.setRecom(rs.getInt("recom_cnt"));
 				return b;
 			}
 

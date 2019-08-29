@@ -20,7 +20,6 @@ public class userInfo implements BaseUI{
 		System.out.println("주소:"+LoginInfo.getAddress());
 		System.out.println("휴대폰 번호:"+LoginInfo.getPhone_no());
 		System.out.println("이름:"+LoginInfo.getName());
-		System.out.println("유저타입:"+LoginInfo.getUsertype());
 		System.out.println("시그니쳐메뉴");
 		System.out.println("---------------------");
 		System.out.println("1.수정");

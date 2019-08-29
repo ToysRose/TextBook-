@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="kr.co.burger.menuDao.MenuReview">
+	
+		<resultMap type="CommentDate" id="commentMap">
+		<result column="co_no" property="comenNo" />
+		<result column="no" property="no" />
+		<result column="id" property="id" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="recom_cnt" property="recom_cnt" />
+		<result column="g_code" property="gCode" />
+	</resultMap>
+	
+	
+	
+	<!-- 메뉴리뷰댓글UI입니다. -->
+	<select id ="menuReviewComment" parameterType="int" resultMap="commentMap">
+	select *
+	  from tb_comen_stable
+	 where g_code = 'mc'
+	   and no = #{no}
+	  order by co_no
+	</select>
+	
+	<!-- 메뉴 리뷰댓글 등록 -->
+	<insert id ="insertComment" parameterType="commentDate">
+	  insert into tb_comen_stable (
+	   no, content, id, co_no, g_code
+	  )values(
+	   #{no}, #{content}, #{id}, tb_comen_stable_seq.nextval,'mc')
+	</insert>
+	
+	<!-- 메뉴리뷰댓글 수정 -->
+	<update id="updateComment" parameterType="commentDate">
+	update tb_comen_stable
+	   set content = #{content}
+	 where co_no = #{co_no}
+	</update>
+	
+	<!-- 메뉴리뷰댓글 삭제 -->
+	<delete id="deleteComment" parameterType="int">
+	  delete
+	    from tb_comen_stable
+	   where co_no = #{co_no}
+	</delete>
+	
+	
+	    <resultMap type="ReviewDate" id="ReviewMap">
+		<result column="code" property="code" />
+		<result column="no" property="no" />
+		<result column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="read" property="read" />
+		<result column="recom_cnt" property="recom_cnt" />
+		<result column="g_code" property="gCode" />
+	</resultMap>
+	
+	<!-- 메뉴 리뷰 검색 -->
+	<select id ="menuReview" parameterType="int" resultMap="ReviewMap">
+	 select *
+	   from tb_rev_stable
+	  where g_code = 'mr'
+	    and code = #{code}
+	    order by no
+	</select>
+	
+	<!-- 메뉴 리뷰 등록 -->
+	<insert id="insertReview" parameterType="reviewDate">
+	insert into tb_rev_stable(
+	        code, no, content, id, recom_cnt, read, title, g_code
+	        )values(
+	        #{code}, TB_REV_STABLE_SEQ.nextval, #{content}, #{id}, 0, 0,
+	         #{title}, 'mr'
+	        )
+	</insert>
+	
+	<!-- 리뷰 하나선택-->
+	<select id="selectOneReview" parameterType="int" resultType="reviewDate">
+	 select *
+	   from tb_rev_stable
+	  where no = #{no}
+	    and g_code = 'mr'
+	</select>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="reviewdelete" parameterType="reviewDate">
+	  delete 
+	    from tb_rev_stable
+	   where g_code = 'mr'
+	    and code = #{code}
+	    and no = #{no}
+	</delete>
+	
+	<!-- 리뷰 수정 -->
+	<update id="reviewUpdate" parameterType="reviewDate">
+	update tb_rev_stable
+	   set title = #{title}, content = #{content}
+	 where g_code = 'mr'
+	   and code = #{code}
+	   and no = #{no}
+	</update>
+	</mapper>

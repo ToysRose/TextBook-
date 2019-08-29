@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.burger.shopDao.ShopReviewCommentDAO">
+
+	<select id="shopReviewComment" parameterType="int" resultType="commentDate">
+		select a.*,
+		       a.co_no as comenNo,
+		       a.reg_date as regDate				
+		  from tb_comen_stable a	 
+		 where g_code = 'sr'	
+		   and no = #{no}	
+		 order by co_no				
+	</select>
+
+
+	<insert id="insertComment" parameterType="commentDate">
+		insert into tb_comen_stable(no, content, id, recom, co_no, g_code) values 
+		(#{no}, #{content},#{id}, #{recom_cnt}, tb_comen_stable_seq.nextval, 'sr')
+	</insert>
+	
+	<update id="updateComment" parameterType="commentDate">
+		update tb_comen_stable set content = #{content} where co_no = #{comenNo}
+	</update>
+	<delete id="deleteComment" parameterType="int">
+		delete from tb_comen_stable where co_no = #{comenNo}
+	</delete>
+	
+</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -102,12 +102,5 @@ public class userDao {
 		}
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

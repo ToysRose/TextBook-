@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="kr.co.burger.menuDao.mComenRecomMapper">
+	
+	<select id="recom0" parameterType="commentDate" resultType="int">
+		select count(*)		
+		  from tb_comen_stable
+		 where id = #{id}		
+		   and g_code = 'm'	
+		   and co_no = #{comenNo}		
+	</select>
+
+	<select id="recom1" parameterType="commentDate" resultType="int">
+		select count(*)		
+		  from tb_read_recom
+		 where id = #{id}		
+		   and g_code = 'mc'	
+		   and co_no = #{comenNo}		
+	</select>
+	
+	<insert id="recom2" parameterType="commentDate">
+		insert into tb_read_recom(id, co_no, g_code) values (#{id}, #{comenNo}, 'mc')
+	</insert>
+	
+	<update id="recom3" parameterType="commentDate">
+		update tb_comen_stable set recom_cnt = recom_cnt + 1 where co_no = #{comenNo}
+	</update>
+	
+	</mapper>

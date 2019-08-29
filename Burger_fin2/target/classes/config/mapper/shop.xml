@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.burger.shopDao.shopDao">
+
+	<select id="shopSelect" parameterType="int" resultType="shopDate">
+		select *
+		  from tb_shop where code= #{code}
+	</select>
+	
+	<select id="recom1" parameterType="Userdate" resultType="int">
+		select count(*)		
+		  from tb_read_recom
+		 where id = #{id}		
+		   and g_code = 's'
+		   and no =  #{code}		
+	</select>
+	
+	<insert id="recom2" parameterType="reviewDate">
+		insert into tb_read_recom(id, no, g_code) values (#{id}, #{no}, 's')
+	</insert>
+	
+	<update id="recom3" parameterType="reviewDate">
+		update tb_rev_stable set recom_cnt = recom_cnt + 1 where no = #{no}
+	</update>
+	
+	<insert id="insertRecom" parameterType="Userdate">
+		insert into tb_read_recom(id, no, g_code) values (#{id}, #{code}, 's')
+	</insert>
+	
+	<update id="updateRecom" parameterType="int">
+		update tb_shop set recom_cnt = recom_cnt + 1 where code = #{code}
+	</update>
+	
+	<!-- 리뷰 관련 -->
+	<select id="selectShopReview" parameterType="int" resultType="reviewDate">
+		select *				
+		  from tb_rev_stable	
+		 where g_code = 's'		
+		   and code = #{code}	
+		 order by no			
+	</select>
+	
+	<select id="selectOneReview" parameterType="int" resultType="reviewDate">
+		select a.*, reg_date as regDate				
+		  from tb_rev_stable a
+		 where a.g_code = 's'		
+		   and a.no = #{no}	
+	</select>
+	
+	<update id="reviewUpdate" parameterType="reviewDate">
+		update tb_rev_stable 
+		   set title = #{title}, content= #{content}
+		 where g_code = 's' 
+		   and code = #{code} 
+		   and no = #{no} 	
+	</update>
+	
+	<delete id="reviewdelete" parameterType="reviewDate">
+		delete from tb_rev_stable 
+		 where g_code = 's' 
+		   and code = #{code} 
+		   and no = #{no} 	
+	</delete>
+	
+	<insert id="insertReview" parameterType="reviewDate">
+		insert into tb_rev_stable(
+			code, no, content, id, title, g_code
+		) values (
+			#{code} , TB_REV_STABLE_SEQ.nextval, #{content}, #{id} , #{title} , 's'
+		)
+	</insert>
+	
+</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

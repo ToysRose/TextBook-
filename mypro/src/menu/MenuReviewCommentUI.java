@@ -16,6 +16,8 @@ public class MenuReviewCommentUI {
 	public void service(int no) {
 		MenuReviewCommentDAO dao = new MenuReviewCommentDAO();
 		List<commentDate> list = dao.menuReviewComment(no);
+		while (true) {
+			
 		System.out.println("전체 " + list.size() + "개");
 		System.out.println("-------------------------------");
 		System.out.println("번호  내용 글쓴이 작성일  추천수");
@@ -26,10 +28,9 @@ public class MenuReviewCommentUI {
 		for (commentDate c : list) {
 			System.out.printf("%d %s %s %s %d \n",
 					c.getComenNo(), c.getContent(), c.getId(), c.getRegDate(),
-					c.getRecom());
+					c.getRecom_cnt());
 		}
 		
-		while (true) {
 			System.out.println("-------------------------------");
 			System.out.println("1. 댓글 쓰기");
 			System.out.println("2. 댓글 수정");
@@ -44,10 +45,14 @@ public class MenuReviewCommentUI {
 				new MenuReviewCommentUpdateUI();
 				break;
 			case 3:
-				new MenuReviewCommentDeleteUI().service();
+				new MenuReviewCommentDeleteUI();
 				break;
 			case 0:
 				return;
+			default:{
+				System.out.println("잘못선택하였습니다.");
+				System.out.println("다시 선택하여주세요.");
+			}
 			}
 		}
 	}

@@ -1,45 +1,42 @@
 package kr.co.burger.start;
 
 import java.util.Scanner;
-import java.util.concurrent.Delayed;
 
-import javax.xml.bind.annotation.XmlElement.DEFAULT;
-
-import kr.co.burger.domain.User;
-import userDao.BaseUI;
-import 로그인.logIn;
-import 로그인.logOut;
-import 로그인.userInfo;
-import 로그인.userJoin;
-import 로그인.userOut;
-import 샵.shop;
+import kr.co.burger.InterfaceA.BaseUI;
+import kr.co.burger.domain.Userdate;
+import kr.co.burger.loginUi.logIn;
+import kr.co.burger.loginUi.logOut;
+import kr.co.burger.loginUi.userInfo;
+import kr.co.burger.loginUi.userJoin;
+import kr.co.burger.menuUI.menuA;
+import kr.co.burger.noticeUI.noticeUI;
 
 public class UI {
 	
-public static User LoginStatus = null;
+public static Userdate LoginStatus = null;
 
 public static Scanner sc = new Scanner(System.in);
 
 	public void service() {
 		BaseUI ui =null;
 		while(true) {
-			if(LoginStatus != null) {
+			if(LoginStatus == null) {
 				switch(menuview()) {
 				case 1 : ui= new logIn(); break;
-				case 2 : ui= new menu();break;
+				case 2 : ui= new menuA(LoginStatus);break;
 				case 3 : ui= new userJoin(); break;
-				case 4 : ui= new shop();  break;
-				case 5 : ui= new notice(); break;
+//				case 4 : ui= new shop(LoginStatus);  break;
+				case 5 : ui= new noticeUI(LoginStatus); break;
 				case 0 : exit();
 				default :  System.out.println("잘못선택했습니다"); break;
 				}
 			}else {
 				switch(menuview()) {
 				case 1 : ui= new logOut(); break;
-				case 2 : ui= new menu();break;
+				case 2 : ui= new menuA(LoginStatus);break;
 				case 3 : ui= new userInfo(LoginStatus); break;
-				case 4 : ui= new shop();  break;
-				case 5 : ui= new notice(); break;
+//				case 4 : ui= new shop(LoginStatus);  break;
+				case 5 : ui= new noticeUI(LoginStatus); break;
 				case 0 : exit();
 				default :  System.out.println("잘못선택했습니다"); break;
 				}
@@ -50,7 +47,7 @@ public static Scanner sc = new Scanner(System.in);
 	
 	
 public int menuview() {
-	if(LoginStatus != null) {
+	if(LoginStatus == null) {
 	System.out.println("------------------------");
 	System.out.println("메인메뉴");
 	System.out.println("------------------------");

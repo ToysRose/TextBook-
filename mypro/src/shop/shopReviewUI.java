@@ -20,6 +20,7 @@ public class shopReviewUI implements BaseUI {
 	}
 //지점,메뉴 코드를 받아서 뿌려줌
 	public void service() {
+		while (true) {
 		List<reviewDate> list = dao.shopReview(code);
 		System.out.println("전체 " + list.size() + "개");
 		System.out.println("-------------------------------");
@@ -30,21 +31,24 @@ public class shopReviewUI implements BaseUI {
 		}
 		for (reviewDate r : list) {
 			System.out.printf("%d %s %s %s %d %d\n", r.getNo(), r.getTitle(), r.getId(), r.getRegDate(), r.getRead(),
-					r.getRecom());
+					r.getRecom_cnt());
 		}
-		while (true) {
 			System.out.println("-------------------------------");
 			System.out.println("1. 글 선택");
 			System.out.println("2. 리뷰 등록");
 			System.out.println("0. 이전");
 			System.out.print("번호를 입력하세요.");
 			switch (Integer.parseInt(UI.sc.nextLine())) {
-			case 1: new shopSelectOneReviewUI(LoginInfo).service();
+			case 1: new shopSelectOneReviewUI(LoginInfo).service(code);
 				break;
 			case 2: new shopInsertReviewUI(LoginInfo).service(code);
 				break;
 			case 0:
 				return;
+				default:{
+					System.out.println("잘못 선택하셧 습니다.");
+					System.out.println("다시선택하세요.");
+				}
 			}
 		}
 	}

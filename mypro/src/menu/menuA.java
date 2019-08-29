@@ -15,8 +15,8 @@ public class menuA implements BaseUI{
 		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 		System.out.println("1. 전체 메뉴");
 		System.out.println("2. 추천 메뉴");
-		System.out.println("3. 메뉴 검색");
-		System.out.println("4. 시그니쳐 메뉴");
+//		System.out.println("3. 메뉴 검색");
+//		System.out.println("4. 시그니쳐 메뉴");
 		System.out.println("0. 이전");
 		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 		System.out.print("입력 : ");

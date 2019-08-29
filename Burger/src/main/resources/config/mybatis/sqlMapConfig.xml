@@ -9,9 +9,17 @@
 	<!-- SQL의 결과를 담을 VO 객체들의 별칭을 설정하여 사용의 편의를 도모 
 	 -->
 	<typeAliases>
-		<typeAlias alias="User" type="kr.co.burger.domain.Userdata" />
-		<typeAlias alias="Shop" type="kr.co.burger.domain.ShopDate" />
-		<typeAlias alias="RecomRead" type="kr.co.burger.domain.recomRead" />
+		<typeAlias alias="Userdate" type="kr.co.burger.domain.Userdate" />
+		<typeAlias alias="shopDate" type="kr.co.burger.domain.shopDate" />
+		<typeAlias alias="reviewDate" type="kr.co.burger.domain.reviewDate" />
+		<typeAlias alias="recomReadDate" type="kr.co.burger.domain.recomReadDate" />
+		<typeAlias alias="noticeDate" type="kr.co.burger.domain.noticeDate" />
+		<typeAlias alias="mIngredientDate" type="kr.co.burger.domain.mIngredientDate" />
+		<typeAlias alias="ingredientDate" type="kr.co.burger.domain.ingredientDate" />
+		<typeAlias alias="commentDate" type="kr.co.burger.domain.commentDate" />
+		<typeAlias alias="BurgerDate" type="kr.co.burger.domain.BurgerDate" />
+		
+		
 	</typeAliases>
 	
 	<environments default="development">
@@ -29,6 +37,13 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="config/mapper/Test1.xml"/>
+		<mapper resource="config/mapper/logIn.xml"/>
+		<mapper resource="config/mapper/notice.xml"/>
+		<mapper resource="config/mapper/menuReview.xml"/>
+		<mapper resource="config/mapper/selectMenu.xml"/>
+		<mapper resource="config/mapper/menuRecom.xml"/>
+		<mapper resource="config/mapper/mReviewRecom.xml"/>
+		<mapper resource="config/mapper/mComenRecom.xml"/>
+		
 	</mappers>
 </configuration>

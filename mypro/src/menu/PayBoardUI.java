@@ -2,9 +2,9 @@ package menu;
 
 import Main.UI;
 
-public class PayBoardUI implements InterfaceA.BaseUI {
+public class PayBoardUI {
 
-	public void service() {
+	public PayBoardUI() {
 
 		System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 		System.out.println("1. 현금결제");

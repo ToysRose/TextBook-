@@ -26,7 +26,7 @@ public class ShopReviewCommentUI {
 		for (commentDate c : list) {
 			System.out.printf("%d %s %s %s %d \n",
 					c.getComenNo(), c.getContent(), c.getId(), c.getRegDate(),
-					c.getRecom());
+					c.getRecom_cnt());
 		}
 		
 		while (true) {

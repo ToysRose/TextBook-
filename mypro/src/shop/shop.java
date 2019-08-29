@@ -4,7 +4,7 @@ import InterfaceA.BaseUI;
 import Main.UI;
 import Vo.Userdata;
 import Vo.shopDate;
-import shopDao.recomDAO;
+import shopDao.shopRecomDAO;
 import shopDao.shopDao;
 
 public class shop implements BaseUI{
@@ -38,7 +38,7 @@ public class shop implements BaseUI{
 		
 		switch(Integer.parseInt(UI.sc.nextLine())) {
 		case 1 :  
-			if(new recomDAO().recom1(code,LoginInfo) == 0) System.out.println("추천되었습니다.");
+			if(new shopRecomDAO().recom1(code,LoginInfo) == 0) System.out.println("추천되었습니다.");
 			else System.out.println("이미 추천하셨습니다."); break;
 		case 2 : new shopReviewUI(code,LoginInfo).service(); break;
 		case 0 : return;

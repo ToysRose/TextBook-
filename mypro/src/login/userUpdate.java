@@ -10,7 +10,7 @@ public class userUpdate {
 	public userUpdate(Userdata LoginInfo) {
 		
 		JoinDao j = new JoinDao();
-		Userdata u=new Userdata();
+		Userdata u=LoginInfo;
 		
 		u.setPassword(j.noBlank("수정할 비밀번호를 입력해주세요"));
 		
@@ -20,7 +20,7 @@ public class userUpdate {
 		
 		u.setName(j.noBlank("수정할 이름을 입력해주세요"));
 		
-		new userDao().updateUser(LoginInfo.getId(),u);
+		new userDao().updateUser(u.getId(),u);
 		UI.LoginStatus=null;
 		System.out.println("다시 로그인해주세요.");
 		

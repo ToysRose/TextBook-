@@ -9,7 +9,7 @@ public class commentDate {
 	private String id;
 	private String content;
 	private Date regDate;
-	private int recom;
+	private int recom_cnt;
 	private String gCode;
 	
 	public int getNo() {
@@ -42,11 +42,11 @@ public class commentDate {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public int getRecom() {
-		return recom;
+	public int getRecom_cnt() {
+		return recom_cnt;
 	}
-	public void setRecom(int recom) {
-		this.recom = recom;
+	public void setRecom_cnt(int recom_cnt) {
+		this.recom_cnt = recom_cnt;
 	}
 	public String getgCode() {
 		return gCode;

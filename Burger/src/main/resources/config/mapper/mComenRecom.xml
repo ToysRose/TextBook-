@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="kr.co.burger.menuDao.mComenRecomMapper">
+	
+	<select id="recom1" parameterType="Userdate" resultType="int">
+	select count(*)
+	  from tb_read_recom
+	 where id = #{id}
+	   and g_code = 'mc'
+	   and no = #{code}
+	</select>
+	
+	<insert id="recom2" parameterType="int">
+	insert tb_read_recom(
+	  id, no, g_code
+	)values( #{id}, #{no}, 'mc' )
+	</insert>
+	
+	<update id="recom3" parameterType="int">
+	update tb_shop
+	   set recom_cnt = recom_cnt +1
+	 where code = #{code}
+	</update>
+	
+	</mapper>

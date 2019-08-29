@@ -33,7 +33,7 @@ public class ShopReviewCommentDAO {
 				comment.setContent(rs.getString("content"));
 				comment.setId(rs.getString("id"));
 				comment.setRegDate(rs.getDate("reg_date"));
-				comment.setRecom(rs.getInt("recom_cnt"));
+				comment.setRecom_cnt(rs.getInt("recom_cnt"));
 				list.add(comment);
 			}
 			return list;
@@ -49,8 +49,8 @@ public class ShopReviewCommentDAO {
 	public void insertComment(commentDate c) {
 		try {
 			SqlExcutor.update(
-				"insert into tb_comen_stable(no, content, id, recom, co_no, g_code) values (?, ?, ?, ?, ?, tb_comen_stable_seq.nextval, 'sr')", 
-				c.getNo(), c.getContent(), c.getId(), c.getRecom());
+				"insert into tb_comen_stable(no, content, id, recom_cnt, co_no, g_code) values (?, ?, ?, ?, ?, tb_comen_stable_seq.nextval, 'sr')", 
+				c.getNo(), c.getContent(), c.getId(), c.getRecom_cnt());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

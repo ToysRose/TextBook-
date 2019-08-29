@@ -5,7 +5,7 @@ import menuDao.MenuReviewCommentDAO;
 
 public class MenuReviewCommentDeleteUI {
 	
-	public void service() {
+	public MenuReviewCommentDeleteUI() {
 		MenuReviewCommentDAO dao = new MenuReviewCommentDAO();
 		System.out.println("삭제할 글번호를 입력하세요 : ");
 		int comenNo = Integer.parseInt(UI.sc.nextLine());

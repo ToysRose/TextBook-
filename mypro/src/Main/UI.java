@@ -1,19 +1,15 @@
 package Main;
 
 import java.util.Scanner;
-import java.util.concurrent.Delayed;
-
-import javax.xml.bind.annotation.XmlElement.DEFAULT;
 
 import InterfaceA.BaseUI;
 import Vo.Userdata;
 import login.logIn;
 import login.logOut;
-import login.userDelete;
 import login.userInfo;
 import login.userJoin;
 import menu.menuA;
-import notice.notice;
+import notice.noticeUI;
 import shop.shop;
 
 public class UI {
@@ -31,7 +27,7 @@ public static Scanner sc = new Scanner(System.in);
 				case 2 : ui= new menuA(LoginStatus);break;
 				case 3 : ui= new userJoin(); break;
 				case 4 : ui= new shop(LoginStatus);  break;
-				case 5 : ui= new notice(); break;
+				case 5 : ui= new noticeUI(LoginStatus); break;
 				case 0 : exit();
 				default :  System.out.println("잘못선택했습니다"); break;
 				}
@@ -41,7 +37,7 @@ public static Scanner sc = new Scanner(System.in);
 				case 2 : ui= new menuA(LoginStatus);break;
 				case 3 : ui= new userInfo(LoginStatus); break;
 				case 4 : ui= new shop(LoginStatus);  break;
-				case 5 : ui= new notice(); break;
+				case 5 : ui= new noticeUI(LoginStatus); break;
 				case 0 : exit();
 				default :  System.out.println("잘못선택했습니다"); break;
 				}

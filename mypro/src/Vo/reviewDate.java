@@ -11,7 +11,7 @@ public class reviewDate {
 	private String content;
 	private Date regDate;
 	private int read;
-	private int recom;
+	private int recom_cnt;
 	private String gCode;
 	
 	public int getCode() {
@@ -56,11 +56,11 @@ public class reviewDate {
 	public void setRead(int read) {
 		this.read = read;
 	}
-	public int getRecom() {
-		return recom;
+	public int getRecom_cnt() {
+		return recom_cnt;
 	}
-	public void setRecom(int recom) {
-		this.recom = recom;
+	public void setRecom_cnt(int recom_cnt) {
+		this.recom_cnt = recom_cnt;
 	}
 	public String getgCode() {
 		return gCode;

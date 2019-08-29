@@ -20,6 +20,7 @@ public class menuReviewUI {
 
 	public void service() {
 		List<reviewDate> list = dao.menuReview(code);
+		while (true) {
 		System.out.println("전체 " + list.size() + "개");
 		System.out.println("-------------------------------");
 		System.out.println("번호  제목 글쓴이 작성일 조회수 추천수");
@@ -29,23 +30,22 @@ public class menuReviewUI {
 		}
 		for (reviewDate r : list) {
 			System.out.printf("%d %s %s %s %d %d\n", r.getNo(), r.getTitle(), r.getId(), r.getRegDate(), r.getRead(),
-					r.getRecom());
+					r.getRecom_cnt());
 		}
-		while (true) {
 			System.out.println("-------------------------------");
 			System.out.println("1. 글 선택");
 			System.out.println("2. 리뷰 등록");
 			System.out.println("0. 이전");
 			System.out.print("번호를 입력하세요.");
+			
 			switch (Integer.parseInt(UI.sc.nextLine())) {
-			case 1:
-				new menuSelectOneReviewUI(LoginInfo).service();
-				break;
-			case 2: new menuInsertReviewUI(LoginInfo).service(code);
-				
-				break;
-			case 0:
-				return;
+			case 1: new menuSelectOneReviewUI(LoginInfo).service(code);break;
+			case 2: new menuInsertReviewUI(LoginInfo).service(code);break;
+			case 0: return;
+			default:{
+				System.out.println("잘못선택하였습니다.");
+				System.out.println("다시 선택하여주세요.");
+			}
 			}
 		}
 	}

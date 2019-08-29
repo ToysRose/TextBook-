@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+		
+	<mapper namespace="kr.co.burger.noticeDAO.noticeMapper">
+	
+	<delete id="deleteBoard" parameterType="int">
+	delete from tb_notice where no = #{no}
+	</delete>
+	
+	<update id="updateBoard" parameterType="noticeDate">
+	update tb_notice set title = #{title}, content = #{content} where no = #{no}
+	</update>
+	
+	<insert id="insertBoard" parameterType="noticeDate">
+	insert into tb_notice(no, title, id, content, READ)
+	 values (seq_board_no.nextval, #{title}, #{id}, #{content}, 0)
+	</insert>
+	
+	<select id="selectOneBoard" parameterType="int" resultType="noticeDate">
+	select * from tb_notice where no = #{no}
+	</select>
+	
+	<select id="selectBoard" resultType="noticeDate">
+	
+	select * from tb_notice
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</mapper>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

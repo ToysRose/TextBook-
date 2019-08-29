@@ -7,13 +7,6 @@ public class Userdata {
 	String address;
 	String phone_no;
 	String name;
-	String usertype;
-	public String getUsertype() {
-		return usertype;
-	}
-	public void setUsertype(String usertype) {
-		this.usertype = usertype;
-	}
 	public String getId() {
 		return id;
 	}

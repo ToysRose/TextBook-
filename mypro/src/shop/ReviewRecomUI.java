@@ -1,10 +1,10 @@
 package shop;
 
-import shopDao.ReviewRecomDAO;
+import shopDao.shopReviewRecomDAO;
 
 public class ReviewRecomUI {
 	public ReviewRecomUI(int no, String id) {
-		switch (new ReviewRecomDAO().recom0(no, id)) {
+		switch (new shopReviewRecomDAO().recom0(no, id)) {
 		case 0:
 			System.out.println("추천되었습니다.");
 			break;

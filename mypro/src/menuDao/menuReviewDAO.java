@@ -35,7 +35,7 @@ public class menuReviewDAO {
 			review.setId(rs.getString("id"));
 			review.setRegDate(rs.getDate("reg_date"));
 			review.setRead(rs.getInt("read"));
-			review.setRecom(rs.getInt("recom"));
+			review.setRecom_cnt(rs.getInt("recom_cnt"));
 			list.add(review);
 		}
 		return list;
@@ -49,7 +49,7 @@ public class menuReviewDAO {
 	}
 	
 //리뷰 글 하나를 가져옴
-	public reviewDate selectOneReview(int no) {
+	public reviewDate selectOneReview(int no,int code) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -60,6 +60,7 @@ public class menuReviewDAO {
 			sql.append("  from tb_rev_stable");
 			sql.append(" where no = ?"
 					+ " and g_code = 'm' ");
+			sql.append("   and code =" + code);
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, no);
 			ResultSet rs = pstmt.executeQuery();
@@ -71,7 +72,7 @@ public class menuReviewDAO {
 				review.setContent(rs.getString("content"));
 				review.setRegDate(rs.getDate("reg_date"));
 				review.setRead(rs.getInt("read"));
-				review.setRecom(rs.getInt("recom"));
+				review.setRecom_cnt(rs.getInt("recom_cnt"));
 				review.setCode(rs.getInt("code"));
 				return review;
 			}
@@ -123,8 +124,8 @@ public class menuReviewDAO {
 		public void insertReview(reviewDate r) {
 			try {
 				SqlExcutor.update(
-					"insert into tb_rev_stable(code, no, content, id, recom, read, title, g_code) values (?, TB_REV_STABLE_SEQ.nextval, ?, ?, 0, 0, ?, 'm')", 
-					r.getCode(), r.getContent(), r.getId(), r.getRecom());
+					"insert into tb_rev_stable(code, no, content, id, recom_cnt, read, title, g_code) values (?, TB_REV_STABLE_SEQ.nextval, ?, ?, 0, 0, ?, 'm')", 
+					r.getCode(), r.getContent(), r.getId(), r.getRecom_cnt());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

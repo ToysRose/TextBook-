@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 설정파일에서 사용할 프로퍼티의 파일의 경로 지정: classpath -->
+	<properties resource="config/mybatis/db.properties"/>
+	
+	<!-- SQL의 결과를 담을 VO 객체들의 별칭을 설정하여 사용의 편의를 도모 
+	 -->
+	<typeAliases>
+		<typeAlias alias="Userdate" type="kr.co.burger.domain.Userdate" />
+		<typeAlias alias="shopDate" type="kr.co.burger.domain.shopDate" />
+		<typeAlias alias="reviewDate" type="kr.co.burger.domain.reviewDate" />
+		<typeAlias alias="recomReadDate" type="kr.co.burger.domain.recomReadDate" />
+		<typeAlias alias="noticeDate" type="kr.co.burger.domain.noticeDate" />
+		<typeAlias alias="mIngredientDate" type="kr.co.burger.domain.mIngredientDate" />
+		<typeAlias alias="ingredientDate" type="kr.co.burger.domain.ingredientDate" />
+		<typeAlias alias="commentDate" type="kr.co.burger.domain.commentDate" />
+		<typeAlias alias="BurgerDate" type="kr.co.burger.domain.BurgerDate" />
+		
+		
+	</typeAliases>
+	
+	<environments default="development">
+	
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		
+	</environments>
+
+	<mappers>
+		<mapper resource="config/mapper/logIn.xml"/>
+		<mapper resource="config/mapper/mComenRecom.xml"/>
+		<mapper resource="config/mapper/menuRecom.xml"/>
+		<mapper resource="config/mapper/menuReview.xml"/>
+		<mapper resource="config/mapper/mReviewRecom.xml"/>
+		<mapper resource="config/mapper/notice.xml"/>
+		<mapper resource="config/mapper/selectMenu.xml"/>
+		<mapper resource="config/mapper/shop.xml"/>
+		<mapper resource="config/mapper/shopRecomReview.xml"/>
+		<mapper resource="config/mapper/shopReviewComment.xml"/>
+		<mapper resource="config/mapper/shopReviewCommentRecom.xml"/>
+		
+		
+	</mappers>
+</configuration>

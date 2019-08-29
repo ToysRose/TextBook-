@@ -15,7 +15,7 @@ public class ShopReviewCommentInsertUI{
 		// 로그인 정보에 있는 이름으로 작성자를 설정한다.
 		c.setId(LoginInfo.getId());
 		c.setNo(no);
-		c.setRecom(0);
+		c.setRecom_cnt(0);
 		ShopReviewCommentDAO dao = new ShopReviewCommentDAO();
 		dao.insertComment(c);
 

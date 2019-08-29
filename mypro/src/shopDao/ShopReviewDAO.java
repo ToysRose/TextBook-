@@ -35,7 +35,7 @@ public class ShopReviewDAO {
 			review.setId(rs.getString("id"));
 			review.setRegDate(rs.getDate("reg_date"));
 			review.setRead(rs.getInt("read"));
-			review.setRecom(rs.getInt("recom"));
+			review.setRecom_cnt(rs.getInt("recom_cnt"));
 			list.add(review);
 		}
 		return list;
@@ -49,7 +49,7 @@ public class ShopReviewDAO {
 	}
 	
 //글 하나를 가져옴
-	public reviewDate selectOneReview(int no) {
+	public reviewDate selectOneReview(int no,int code) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -59,9 +59,11 @@ public class ShopReviewDAO {
 			sql.append("select * ");
 			sql.append("  from tb_rev_stable");
 			sql.append(" where no = ?"
-					+ " and g_code = 's' ");
+					+ " and g_code = 's' "
+					+ " and code = ?");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, no);
+			pstmt.setInt(2, code);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				reviewDate review = new reviewDate();
@@ -71,12 +73,12 @@ public class ShopReviewDAO {
 				review.setContent(rs.getString("content"));
 				review.setRegDate(rs.getDate("reg_date"));
 				review.setRead(rs.getInt("read"));
-				review.setRecom(rs.getInt("recom"));
+				review.setRecom_cnt(rs.getInt("recom_cnt"));
 				review.setCode(rs.getInt("code"));
 				return review;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			ConnectionFactory.close(pstmt);
 			ConnectionPool.releaseConnection(con);
@@ -87,8 +89,6 @@ public class ShopReviewDAO {
 //	지점 리뷰 글 수정 
 	public void reviewUpdate(reviewDate b) {
 		
-		Connection con =null;
-		PreparedStatement pstmt = null;
 	try {
 		
 		 SqlExcutor.update(
@@ -106,8 +106,6 @@ public class ShopReviewDAO {
 //	글 정보 받아서 지점 리뷰글 삭제
 	public void reviewdelete(reviewDate b) {
 
-		Connection con =null;
-		PreparedStatement pstmt = null;
 	try {
 		 SqlExcutor.update(
 				"delete from tb_rev_stable where g_code = 's'"
@@ -124,8 +122,8 @@ public class ShopReviewDAO {
 	public void insertReview(reviewDate r) {
 		try {
 			SqlExcutor.update(
-				"insert into tb_rev_stable(code, no, content, id, recom, read, title, g_code) values (?, TB_REV_STABLE_SEQ.nextval, ?, ?, 0, 0, ?, 's')", 
-				r.getCode(), r.getContent(), r.getId(), r.getRecom());
+				"insert into tb_rev_stable(code, no, content, id, recom_cnt, read, title, g_code) values (?, TB_REV_STABLE_SEQ.nextval, ?, ?, 0, 0, ?, 's')", 
+				r.getCode(), r.getContent(), r.getId(), r.getRecom_cnt());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
